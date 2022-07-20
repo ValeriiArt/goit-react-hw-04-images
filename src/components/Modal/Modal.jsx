@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import s from './Modal.module.css'
 
@@ -25,12 +25,9 @@ export default function Modal( {children, onClose} ){
       
     return createPortal(
         <div className={s.Overlay} onClick={handleBackdropClick}>
-            <div className={s.Modal}>   
-                {children}
-            </div>
+            <div className={s.Modal}>{children}</div>
         </div>,
         modalRoot,
-    );
-    
+    );  
 }
 
