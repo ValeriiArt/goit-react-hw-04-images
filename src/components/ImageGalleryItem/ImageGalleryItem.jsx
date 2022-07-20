@@ -1,6 +1,7 @@
 import s from './ImageGalleryItem.module.css'
 
-const ImageGalleryItem = ({id, webformatURL, largeImageURL, toggleModal}) => {
+const ImageGalleryItem = ({id, webformatURL, largeImageURL, toggleModal }) => {
+
     return (
         <li key={id}
             className={s.galleryItem}

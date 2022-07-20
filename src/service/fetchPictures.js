@@ -9,6 +9,7 @@ const options = {
 }
 
 export async function fetchPictures(searchText, page) {
+    
     const { image_type, orientation, safesearch, per_page } = options;
     const response = await fetch(`${BASE_URL}/?key=${API_KEY}&q=${searchText}&image_type=${image_type}&orientation=${orientation}&safesearch=${safesearch}&per_page=${per_page}&page=${page}`);
     return response;
