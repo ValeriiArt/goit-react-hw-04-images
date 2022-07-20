@@ -11,9 +11,9 @@ import { toast } from "react-toastify";
 
 export function App() {
   const [modalImage, setModalImage] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
@@ -61,41 +61,40 @@ export function App() {
   };
 
   const toggleModal = (largeImageURL) => {
+    console.log(!showModal)
     setShowModal(!showModal);
     setModalImage(largeImageURL);
   };
 
+  return (
+    <>
+      <Searchbar
+        onSubmit={handelFormSubmit}
+      />
+      <ImageGallery
+        data={data}
+        toggleModal={toggleModal}
+        isLoaded = {isLoaded}
+      />
 
+      { data.length !== 0 && totalHitsPage !== data.length && <Button
+        nameButton='Load More'
+        Click={loadMore}
+      /> } 
+      
+      {showModal && (
+        <Modal onClose={toggleModal}>
+          <img src={modalImage} alt="" />
+          <Button 
+            nameButton='Close'
+            Click={toggleModal}
+          />
+        </Modal>
+      )}
 
-    return (
-      <>
-        <Searchbar
-          onSubmit={handelFormSubmit}
-        />
-        <ImageGallery
-          data={data}
-          toggleModal={toggleModal}
-          isLoaded = {isLoaded}
-        />
-
-        { data.length !== 0 && totalHitsPage !== data.length && <Button
-          nameButton='Load More'
-          Click={loadMore}
-        /> } 
-        
-        {showModal && (
-          <Modal onClose={toggleModal}>
-            <img src={modalImage} alt="" />
-            <Button 
-              nameButton='Close'
-              Click={toggleModal}
-            />
-          </Modal>
-        )}
-
-        <ToastContainer autoClose={3000}/>
-      </>
-    ); 
+      <ToastContainer autoClose={3000}/>
+    </>
+  ); 
 
 };
 
