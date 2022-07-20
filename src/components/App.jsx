@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 export function App() {
   const [modalImage, setModalImage] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null); 
   const [isLoaded, setIsLoaded] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [page, setPage] = useState(1);
@@ -44,7 +44,8 @@ export function App() {
         },
           (error) => {
             setIsLoaded(true);
-            setError(error);
+            console.error(error)
+            // setError(error);
           }
         ).finally(() => setIsLoaded(false ))
     };
