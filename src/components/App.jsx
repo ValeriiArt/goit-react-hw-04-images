@@ -62,7 +62,6 @@ export function App() {
   };
 
   const toggleModal = (largeImageURL) => {
-    console.log(!showModal)
     setShowModal(!showModal);
     setModalImage(largeImageURL);
   };

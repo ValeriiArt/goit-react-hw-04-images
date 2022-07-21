@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 const BASE_URL = "https://pixabay.com/api";
 const API_KEY = "27064773-d5b51f526778ba93a6d48a229";
@@ -14,4 +15,9 @@ export async function fetchPictures(searchText, page) {
     const response = await fetch(`${BASE_URL}/?key=${API_KEY}&q=${searchText}&image_type=${image_type}&orientation=${orientation}&safesearch=${safesearch}&per_page=${per_page}&page=${page}`);
     return response;
 };
+
+fetchPictures.propTypes = {
+    page: PropTypes.number.isRequired,
+    searchText: PropTypes.string.isRequired,
+}
    
